@@ -1,25 +1,46 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Home from './Pages/Home/Home';
+import CssBaseline from '@mui/material/CssBaseline';
+import Navbar from './Components/Navbar/Navbar';
+import Footer from './Components/Footer/Footer';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
+const ColorModeContext = React.createContext({ toggleColorMode: () => { } });
 function App() {
+  const title = "Vincent Martinez";
+  const colorMode = React.useMemo(
+    () => ({
+      toggleColorMode: () => {
+        setMode((prevToggleColorMode) => (prevToggleColorMode === 'light' ? 'dark' : 'light'));
+      },
+    }),
+    [],
+  );
+  const [mode, setMode] = React.useState<'light' | 'dark'>('light');
+  const theme = React.useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode,
+        },
+        components: {
+
+        }
+      }),
+    [mode],
+  );
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <div className="App" style={{minHeight:"100vh", display:'flex', flexDirection: 'column'}}>
+          <CssBaseline />
+          {<Navbar colorMode={colorMode} theme={theme} title={title} />}
+          <Home />
+          <Footer title={title} />
+        </div>
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 }
 
