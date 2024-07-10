@@ -1,0 +1,29 @@
+  
+  .article-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .article-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+  
+  .btn-secondary {
+    margin-bottom: 20px;
+  }
+  
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .card-title {
+    margin-bottom: 0.5rem;
+  }
+  
+  .card-text {
+    margin-bottom: 0;
+  }
+  

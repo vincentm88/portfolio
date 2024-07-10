@@ -1,7 +1,6 @@
 import React from 'react'
 import Container from '@mui/material/Container';
 import { useState, useEffect } from 'react';
-import vinceImg from '../../Images/vince.jpg';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import { styled } from '@mui/material/styles';
@@ -47,7 +46,7 @@ function Home() {
                     <Item id='imgItem' elevation={1} style={imgStyle}>
                         <ImageList cols={1}  >
                             <ImageListItem >
-                                <img src={vinceImg} alt="Logo" loading="lazy" />
+                                <img src="/images/vince.jpg" alt="Logo" loading="lazy" />
                             </ImageListItem>
                         </ImageList>
                     </Item>

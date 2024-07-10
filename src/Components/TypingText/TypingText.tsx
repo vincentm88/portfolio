@@ -6,7 +6,7 @@ interface Props {
 }
 
 function getTypingSpeed() {
-  let speed = (Math.random() * (650 - 150) + 150);
+  let speed = (Math.random() * (450 - 50) + 50);
   return speed;
 }
 
