@@ -42,7 +42,7 @@ const Articles: React.FC = () => {
     // Fetch all articles initially
     const fetchAllArticles = async () => {
       try {
-        const response = await axios.get<Article[]>('/article');
+        const response = await axios.get<Article[]>('http://localhost:5500/article');
         setArticles(response.data);
         // Load metadata for the first batch of articles
         loadMoreArticles(response.data, 0, articlesPerPage);
@@ -66,7 +66,7 @@ const Articles: React.FC = () => {
       }
 
       try {
-        const metadataResponse = await axios.get<Metadata>(`/article/${articleIndex}`);
+        const metadataResponse = await axios.get<Metadata>(`http://localhost:5500/article/${articleIndex}`);
         setLoadedArticles((prevLoadedArticles) => [
           ...prevLoadedArticles,
           {
@@ -75,7 +75,7 @@ const Articles: React.FC = () => {
           },
         ]);
         setFetchedMetadata((prevFetched) => new Set(prevFetched).add(articleIndex));
-        console.log(`Fetched metadata for article ${articleIndex}:`, metadataResponse.data);
+        // console.log(`Fetched metadata for article ${articleIndex}:`, metadataResponse.data);
       } catch (error) {
         console.error(`Error fetching metadata for article ${articleIndex}:`, error);
         setLoadedArticles((prevLoadedArticles) => [...prevLoadedArticles, articlesToLoad[index]]);

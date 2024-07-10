@@ -1,9 +1,7 @@
 import { Box, Container, Typography, Paper, List, ListItem, ListItemText, Divider, Link } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
 import Breadcrumbs from "../../../Components/BreadCrumb/Breadcrumb";
 
 const Portfolio: React.FC = () => {
-    const navigate = useNavigate();
     return (
       <Container maxWidth="md">
         <Breadcrumbs />
