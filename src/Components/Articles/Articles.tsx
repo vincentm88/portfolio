@@ -42,7 +42,7 @@ const Articles: React.FC = () => {
     // Fetch all articles initially
     const fetchAllArticles = async () => {
       try {
-        const response = await axios.get<Article[]>('/api/article');
+        const response = await axios.get<Article[]>('/aggregator-api/article');
         setArticles(response.data);
         // Load metadata for the first batch of articles
         loadMoreArticles(response.data, 0, articlesPerPage);
@@ -66,7 +66,7 @@ const Articles: React.FC = () => {
       }
 
       try {
-        const metadataResponse = await axios.get<Metadata>(`/api/article/${articleIndex}`);
+        const metadataResponse = await axios.get<Metadata>(`/aggregator-api/article/${articleIndex}`);
         setLoadedArticles((prevLoadedArticles) => [
           ...prevLoadedArticles,
           {
